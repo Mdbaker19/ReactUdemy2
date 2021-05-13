@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+form{
+    box-shadow: -5px 6px 18px 6px #28a69a;
+    margin: 3vmin 0;
+    padding: .75rem !important;
+    border-radius: 5px;
+}

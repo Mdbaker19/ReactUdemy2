@@ -5,9 +5,10 @@
 }
 
 body{
-    background-color: #165353;
+    background-color: #9DA2AB;
 }
 
 button{
-
+    background-color: #0D324D !important;
+    color: #A188A6 !important;
 }

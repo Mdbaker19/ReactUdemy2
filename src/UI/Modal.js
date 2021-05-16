@@ -1,14 +1,16 @@
+import './Modal.css';
+
 const Modal = (props) => {
 
     const dismissModal = () => {
-
+        props.dismiss(false);
     }
 
     return (
         <>
-            <div className="modal" style={{display: "block"}}>
+            <div className="modal">
                 <p>{props.message}</p>
-                <button onClick={dismissModal}>Okay</button>
+                <button className="btn" onClick={dismissModal}>Okay</button>
             </div>
         </>
     )

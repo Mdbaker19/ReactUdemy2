@@ -23,15 +23,22 @@ function App() {
     const [modalMsg, setModalMsg] = useState("");
 
 
+
     const updateUsers = (newUserInfo) => {
-        if(!newUserInfo.name || !newUserInfo.age) {
+        const {age, name} = newUserInfo;
+        if(!name || !age) {
             setModalMsg("Name and/or age can not be blank");
             setShowModal(true);
-        } else if (parseFloat(newUserInfo.age) <= 0) {
+        } else if (parseFloat(age) <= 0) {
             setModalMsg("Age must be greater than 0");
             setShowModal(true);
-        }
-        else {
+        } else if (isNaN(age)) {
+            setModalMsg("Age must be a number");
+            setShowModal(true);
+        } else if (name.trim().length < 1 || age.trim().length < 1) {
+            setModalMsg("Name and/or age must not be blank");
+            setShowModal(true);
+        } else{
             setShowModal(false);
             setModalMsg("");
             setUsers((prevUsers) => {
@@ -42,13 +49,20 @@ function App() {
         }
     }
 
+    const dismissModal = (status) => {
+        setShowModal(status);
+    }
+
+    const updateUserListFromDelete = (newList) => {
+        setUsers(newList);
+    }
 
   return (
 
       <div className="App container">
-          {showModal && <Modal message={modalMsg}/>}
+          {showModal && <Modal dismiss={dismissModal} message={modalMsg}/>}
           <NewUserForm formSubmitMethod={updateUsers}/>
-          <UserList userList={users}/>
+          <UserList updateUserList={updateUserListFromDelete} userList={users}/>
       </div>
   );
 }

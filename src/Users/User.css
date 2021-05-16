@@ -6,13 +6,13 @@
 
 .userCard {
     padding: 15px;
-    color: #155353;
-    background: #c7aa74;
+    color: #9DA2AB;
+    background: #020202;
     font-size: 1.1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 8vh;
     border-radius: 10px;
-    box-shadow: inset -1px -1px 19px 11px #155353;
+    box-shadow: inset -1px -1px 19px 11px #9DA2AB;
 }

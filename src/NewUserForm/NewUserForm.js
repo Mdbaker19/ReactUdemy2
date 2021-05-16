@@ -12,9 +12,12 @@ const NewUserForm = (props) => {
         const userObj = {
             name: userInput.name,
             age: userInput.age,
-            id: ~~(Math.random() * 1000000).toString()
+            id: ~~(Math.random() * 10000000).toString()
         }
         props.formSubmitMethod(userObj);
+        if(userObj.name && userObj.age) {
+            setUserInput({name: "", age: ""});
+        }
     }
 
     const nameChangeHandler = (e) => {
@@ -29,21 +32,20 @@ const NewUserForm = (props) => {
         });
     }
 
-
     return (
         <>
             <div className="row">
                 <form className="col s12" onSubmit={addUserHandler}>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="first_name" type="text" className="validate" onChange={nameChangeHandler}/>
-                                <label htmlFor="first_name">Name</label>
+                            <input id="first_name" type="text" value={userInput.name ?? ""} className="validate" onChange={nameChangeHandler}/>
+                            <label htmlFor="first_name">Name</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="age" type="text" className="validate" onChange={ageChangeHandler}/>
-                                <label htmlFor="age">Age</label>
+                            <input id="age" type="text" value={userInput.age ?? ""} className="validate" onChange={ageChangeHandler}/>
+                            <label htmlFor="age">Age</label>
                         </div>
                     </div>
                     <button className="btn">Add User</button>
